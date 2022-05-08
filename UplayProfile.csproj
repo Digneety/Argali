@@ -4,11 +4,11 @@
     <OutputType>Exe</OutputType>
     <TargetFramework>net5.0</TargetFramework>
     <DebugType>none</DebugType>
-    <ApplicationIcon>icons8-ubisoft-windows-10-70.ico</ApplicationIcon>
+    <ApplicationIcon>favico.ico</ApplicationIcon>
   </PropertyGroup>
 
   <ItemGroup>
-    <Content Include="icons8-ubisoft-windows-10-70.ico" />
+    <Content Include="favico.ico" />
   </ItemGroup>
 
   <ItemGroup>
