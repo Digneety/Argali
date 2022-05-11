@@ -8,15 +8,15 @@ using System.Threading.Tasks;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
-namespace odk
+namespace Argali
 {
     internal class Program
     {
-        
+
         private static readonly HttpClient _httpClient = new HttpClient();
 
         private static UbisoftToken _token;
-        
+
         /**
          * Setting the default request headers which will be used if not explicitly changed in the request.
          */
@@ -33,7 +33,7 @@ namespace odk
         {
             Console.ForegroundColor = ConsoleColor.DarkBlue;
             Console.WriteLine("Please enter the name of the Player.");
-            Console.ForegroundColor= ConsoleColor.White;
+            Console.ForegroundColor = ConsoleColor.White;
             do
             {
                 while (!Console.KeyAvailable)
@@ -85,7 +85,7 @@ namespace odk
 
                 var content = await response.Content.ReadAsStringAsync();
                 var json = JsonConvert.DeserializeObject<JObject>(content);
-                jObject.Merge(json, new JsonMergeSettings { MergeArrayHandling = MergeArrayHandling.Union});
+                jObject.Merge(json, new JsonMergeSettings { MergeArrayHandling = MergeArrayHandling.Union });
                 string connectionResponse = jObject.ToString();
 
                 /**
@@ -103,7 +103,7 @@ namespace odk
                  */
                 Console.ForegroundColor = ConsoleColor.Red;
                 Console.WriteLine($"The user {userToCheck} does not seem to have a ubisoft account.");
-                Console.ForegroundColor= ConsoleColor.White;
+                Console.ForegroundColor = ConsoleColor.White;
             }
         }
         /**
@@ -124,7 +124,7 @@ namespace odk
             var request = new HttpRequestMessage
             {
                 Method = HttpMethod.Post,
-                Headers = {Authorization = new AuthenticationHeaderValue("Basic", basicCredentials)},
+                Headers = { Authorization = new AuthenticationHeaderValue("Basic", basicCredentials) },
                 RequestUri = new Uri("https://public-ubiservices.ubi.com/v3/profiles/sessions"),
                 Content = new StringContent("{\"Content-Type\": \"application/json\"}", Encoding.UTF8,
                     "application/json")

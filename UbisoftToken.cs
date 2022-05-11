@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace odk
+namespace Argali
 {
     public class UbisoftToken
     {
