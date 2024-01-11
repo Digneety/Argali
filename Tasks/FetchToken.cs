@@ -21,6 +21,26 @@ public class FetchToken
         Console.WriteLine("Connecting to the Ubisoft Servers.");
 
         /*Encoding.UTF8.GetBytes(ConfigurationManager.AppSettings["mail"] + ":" + ConfigurationManager.AppSettings["password"]*/
+        if (!File.Exists("logins.txt"))
+        {
+            Console.WriteLine("Logins.txt not found.");
+            Console.WriteLine("Creating logins.txt");
+
+            await using (var file = File.Create("logins.txt"))
+            { 
+                file.Close();
+            }
+            
+            await File.WriteAllTextAsync("logins.txt", "mail:password187");
+            
+            Console.WriteLine("Please enter your Ubisoft credentials in logins.txt");
+            Console.WriteLine("Press any key to exit.");
+            
+            Console.ReadKey();
+            Environment.Exit(0);
+            return null;
+        }
+
         var logins = await File.ReadAllLinesAsync("logins.txt");
         var random = new Random();
         var index = random.Next(0, logins.Length);
