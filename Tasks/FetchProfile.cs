@@ -81,15 +81,16 @@ public class FetchProfile
         Console.WriteLine($"The user {userToCheck} has following connections: ");
         Console.ForegroundColor = ConsoleColor.White;
 
-        mergedProfiles?.ToList()?.ForEach(connection => Console.WriteLine(new
-        {
-            ProfileUrl = connection.ProfileUrl,
-            Platform = connection.Platform,
-            Username = connection.NameOnPlatform,
-            ProfileId = connection.ProfileId,
-            IdOnPlatform = connection.IdOnPlatform,
-            UserId = connection.UserId
-        }));
+        mergedProfiles?.ToList()?.ForEach(connection =>
+            Console.WriteLine(JsonConvert.SerializeObject(new
+            {
+                ProfileUrl = connection.ProfileUrl,
+                Platform = connection.Platform,
+                Username = connection.NameOnPlatform,
+                ProfileId = connection.ProfileId,
+                IdOnPlatform = connection.IdOnPlatform,
+                UserId = connection.UserId
+            }, Formatting.Indented)));
 
     }
 }
